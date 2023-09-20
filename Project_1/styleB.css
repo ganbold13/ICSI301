@@ -1,0 +1,41 @@
+:root{
+    --borderColor : #687291;
+    --firstColor: #eeeff2;
+    --secondColor: #d0d0ff;
+    --finalColor: #687291;
+}
+
+* {
+    font-family: Tahoma, "Trebuchet MS", sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: horizontal;
+}
+
+.item{
+    height: 150px;
+    width: 100px;
+    margin-right: 10px;
+    background-color: var(--firstColor);
+    border-left: 10px dotted var(--secondColor);
+}
+
+.item:hover{
+    background-color: yellow;
+    color: goldenrod;
+    transition: 1s;
+    cursor: pointer;
+}
+
+#last{
+   position: absolute;
+   right: 0;
+   bottom: 0;
+}
+
+.text{
+    font-size: 40px;
+    margin: 0px 10px;
+}
