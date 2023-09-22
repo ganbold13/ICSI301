@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Calendar</title>
+</head>
+
+<body>
+    <div id="calendar"></div>
+</body>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: center;
+    }
+
+    span{
+        font-weight: bold;
+        font-size: 20px;
+        margin-left: 60px;
+    }
+
+    .current-date {
+        background-color: cadetblue;
+        color: white;
+    }
+</style>
+
+<script>
+    let currentDate = new Date();
+    let calendarMonth, calendarYear;
+    let today, thisMonth, thisYear;
+
+    function displayCalendar() {
+        if (today == undefined) {
+            today = currentDate.getDate();
+            thisMonth = currentDate.getMonth();
+            thisYear = currentDate.getFullYear();
+            calendarYear = thisYear;
+        }
+
+        currentDate.setDate(1);
+
+        const calendar = document.getElementById("calendar");
+        calendar.innerHTML = "";
+
+        const prevButton = document.createElement("button");
+        prevButton.textContent = "\u2190";
+        prevButton.addEventListener("click", previousMonth);
+        calendar.appendChild(prevButton);
+        
+        const nextButton = document.createElement("button");
+        nextButton.textContent = "\u2192";
+        nextButton.addEventListener("click", nextMonth);
+        calendar.appendChild(nextButton);
+        
+        const currentMonth = document.createElement("span");
+        calendar.appendChild(currentMonth);
+
+        const calendarTable = document.createElement("table");
+        calendar.appendChild(calendarTable);
+
+        const tbody = document.createElement("tbody");
+        calendarTable.appendChild(tbody);
+
+        currentMonth.textContent = currentDate.toLocaleDateString('en-US', { month: 'long'}) + " " + calendarYear;
+
+        const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+
+        const firstDayOfWeek = currentDate.getDay();
+
+        calendarMonth = currentDate.getMonth();
+
+        let row = document.createElement("tr");
+
+        let weekdayRow = document.createElement("tr");
+
+        for (let i = 1; i < 8; i++) {
+            let cell = document.createElement("td");
+            var tmpDate = new Date();
+            tmpDate.setDate(i - 5);
+            var weekday = tmpDate.toLocaleString('en-US', { weekday: 'short' });
+            cell.textContent = weekday;
+            weekdayRow.appendChild(cell);
+        }
+
+        tbody.appendChild(weekdayRow);
+
+        for (let i = 0; i < firstDayOfWeek; i++) {
+            let cell = document.createElement("td");
+            cell.textContent = "";
+            row.appendChild(cell);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            let cell = document.createElement("td");
+            cell.textContent = day;
+
+            if (day === today && thisMonth == currentDate.getMonth() && thisYear == calendarYear) {
+                console.log(day);
+                cell.classList.add("current-date");
+            }
+
+            row.appendChild(cell);
+
+            if (currentDate.getDay() === 6 || day === daysInMonth) {
+                tbody.appendChild(row);
+                row = document.createElement("tr");
+            }
+
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+    }
+
+    function previousMonth() {
+        calendarMonth--;
+        if (calendarMonth < 0) {
+            currentDate.setMonth(11);
+            currentDate.setFullYear(--calendarYear);
+        } else {
+            currentDate.setMonth(calendarMonth);
+        }
+        displayCalendar();
+    }
+
+    function nextMonth() {
+        calendarMonth++;
+        if (calendarMonth > 11) {
+            currentDate.setFullYear(++calendarYear);
+            currentDate.setMonth(0);
+        } else {
+            currentDate.setMonth(calendarMonth);
+        }
+        displayCalendar();
+    }
+
+    displayCalendar();
+</script>
+
+</html>
