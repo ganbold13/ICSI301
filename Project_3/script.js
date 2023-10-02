@@ -1,81 +1,88 @@
 const inputs = document.querySelector(".inputs"),
-  hintTag = document.querySelector(".hint span"),
-  guessLeft = document.querySelector(".guess-left span"),
-  wrongLetter = document.querySelector(".wrong-letter span"),
-  resetBtn = document.querySelector(".reset-btn"),
-  typingInput = document.querySelector(".typing-input");
+  guessLeft = document.querySelector(".guess-left"),
+  wrongLetter = document.querySelector(".wrong-letter"),
+  resetBtn = document.querySelector(".reset-btn");
 
 let word,
   maxGuesses,
   incorrectLetters = [],
   correctLetters = [];
-let rightLetterGuesses, wrongLetterGuesses, wordGuesses;
+let rightLetterGuesses = 0,
+  wrongLetterGuesses = 0,
+  wordGuesses = 0;
+
+let focusedInput = null;
 
 function randomWord() {
   let ranItem = wordList[Math.floor(Math.random() * wordList.length)];
   word = ranItem.word;
-  maxGuesses = word.length >= 5 ? 8 : 6;
+  maxGuesses = 5;
   correctLetters = [];
   incorrectLetters = [];
-  hintTag.innerText = ranItem.hint;
   guessLeft.innerText = maxGuesses;
   wrongLetter.innerText = incorrectLetters;
+
+  console.log(word);
 
   let html = "";
   for (let i = 0; i < word.length; i++) {
     html += `<input type="text" data-index="${i}">`;
     inputs.innerHTML = html;
   }
+  focusedInput = null;
+
+  guessLeft.innerText = "Quesses left: " + maxGuesses;
+  wrongLetter.innerText = "Wrong letters: " + incorrectLetters;
 }
 randomWord();
 
 function initGame(e) {
-  let key = e.target.value.toLowerCase();
-  if (
-    key.match(/^[A-Za-z]+$/) &&
-    !incorrectLetters.includes(` ${key}`) &&
-    !correctLetters.includes(key)
-  ) {
-    if (word.includes(key)) {
-      for (let i = 0; i < word.length; i++) {
-        if (word[i] == key) {
-          correctLetters += key;
-          rightLetterGuesses++;
-          const input = inputs.querySelector(`[data-index="${i}"]`);
-          if (input) {
-            input.value = key;
-            input.style.backgroundColor = "green"; // Set background to green for correct letters
-          }
-        }
-      }
+  if (focusedInput === null) return;
+
+  let key = e.key.toLowerCase();
+  if (key.match(/^[A-Za-z]$/)) {
+    if (focusedInput && word[focusedInput.dataset.index] == key) {
+      correctLetters += key;
+      rightLetterGuesses++;
+      focusedInput.value = key;
+      focusedInput.style.backgroundColor = "green";
+      focusedInput.disabled = true;
+      focusedInput = null;
     } else {
       maxGuesses--;
       wrongLetterGuesses++;
       incorrectLetters.push(` ${key}`);
-      const input = inputs.querySelector(`[data-index="${wordGuesses}"]`);
-      if (input) {
-        input.style.backgroundColor = "red"; // Set background to red for wrong letters
+      if (focusedInput) {
+        focusedInput.value = "";
+        focusedInput.style.backgroundColor = "red";
       }
     }
-    guessLeft.innerText = maxGuesses;
-    wrongLetter.innerText = incorrectLetters;
+    guessLeft.innerText = "Quesses left: " + maxGuesses;
+    wrongLetter.innerText = "Wrong letters: " + incorrectLetters;
   }
-  typingInput.value = "";
 
   setTimeout(() => {
     if (correctLetters.length === word.length) {
-      alert(`Congrats! You found the word ${word.toUpperCase()}`);
+      wordGuesses++;
       return randomWord();
     } else if (maxGuesses < 1) {
-      alert("Game over! You don't have remaining guesses");
+      console.log(rightLetterGuesses, wrongLetterGuesses, wordGuesses);
       for (let i = 0; i < word.length; i++) {
         inputs.querySelectorAll("input")[i].value = word[i];
       }
+
+      focusedInput = null;
+
+      guessLeft.innerText = "Total guessed letters: " + rightLetterGuesses;
+      wrongLetter.innerText = "Total guessed words: " + wordGuesses;
     }
   }, 100);
 }
 
 resetBtn.addEventListener("click", randomWord);
-typingInput.addEventListener("input", initGame);
-inputs.addEventListener("click", () => typingInput.focus());
-document.addEventListener("keydown", () => typingInput.focus());
+inputs.addEventListener("click", (e) => {
+  if (e.target.tagName === "INPUT") {
+    focusedInput = e.target;
+  }
+});
+document.addEventListener("keydown", initGame);
