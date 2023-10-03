@@ -41,20 +41,27 @@ function initGame(e) {
 
   let key = e.key.toLowerCase();
   if (key.match(/^[A-Za-z]$/)) {
-    if (focusedInput && word[focusedInput.dataset.index] == key) {
+    if (focusedInput && word[focusedInput.dataset.index] == key) 
+    {
       correctLetters += key;
       rightLetterGuesses++;
       focusedInput.value = key;
       focusedInput.style.backgroundColor = "green";
       focusedInput.disabled = true;
       focusedInput = null;
-    } else {
+    } 
+    else 
+    {
       maxGuesses--;
       wrongLetterGuesses++;
       incorrectLetters.push(` ${key}`);
       if (focusedInput) {
         focusedInput.value = "";
+        var f=focusedInput;
+        f.disabled = true;
+        setTimeout(() => f.disabled = false, 100);
         focusedInput.style.backgroundColor = "red";
+        focusedInput = null;
       }
     }
     guessLeft.innerText = "Quesses left: " + maxGuesses;
