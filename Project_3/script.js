@@ -38,9 +38,12 @@ function randomWord() {
 
   for (let i = 0; i < word.length; i++) {
     if (i % 3 == 0) {
-      var input = inputs.querySelectorAll("input")[i];
-      input.value = word[i];
-      correctLetters += word[i];
+      var r = Math.floor(Math.random() * 3);
+      i > 3 ? (r = i - r) : (r = i + r);
+      if (r >= word.length) r = i;
+      var input = inputs.querySelectorAll("input")[r];
+      input.value = word[r];
+      correctLetters += word[r];
       input.style.backgroundColor = "#4aff5c";
       input.disabled = true;
     }
