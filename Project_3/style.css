@@ -12,19 +12,13 @@ body {
   min-height: 100vh;
   align-items: center;
   justify-content: center;
-  background: #e2dcc8;
+  background: #a7d1ff;
 }
 .wrapper {
-  width: 430px;
+  width: 720px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-.wrapper h1 {
-  font-size: 25px;
-  font-weight: 500;
-  padding: 20px 25px;
-  border-bottom: 1px solid #ccc;
 }
 .wrapper .content {
   margin: 25px 25px 35px;
@@ -40,7 +34,7 @@ body {
   margin: 4px;
   font-size: 24px;
   font-weight: 500;
-  color: #e2dcc8;
+  color: #888888;
   text-align: center;
   border-radius: 5px;
   background: none;
@@ -69,15 +63,27 @@ body {
   border: none;
   cursor: pointer;
   color: #fff;
+  font-weight: bold;
   outline: none;
   padding: 15px 0;
-  font-size: 17px;
+  font-size: 22px;
   border-radius: 5px;
-  background: #e2dcc8;
+  background: #18a6ff;
   transition: all 0.3s ease;
 }
 .content .reset-btn:hover {
-  background: #e2dcc8;
+  background: #167cdc;
+}
+#header {
+  padding: 20px 25px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#timer {
+  font-size: 25px;
+  text-align: center;
 }
 
 @media screen and (max-width: 460px) {

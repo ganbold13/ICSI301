@@ -1,149 +1,149 @@
 let wordList = [
   {
-    word: "python",
+    word: "аав",
   },
   {
-    word: "guitar",
+    word: "матар",
   },
   {
-    word: "aim",
+    word: "сургууль",
   },
   {
-    word: "venus",
+    word: "солонго",
   },
   {
-    word: "gold",
+    word: "зүрх",
   },
   {
-    word: "ebay",
+    word: "машин",
   },
   {
-    word: "golang",
+    word: "хууль",
   },
   {
-    word: "coding",
+    word: "программ",
   },
   {
-    word: "matrix",
+    word: "компьютер",
   },
   {
-    word: "bugs",
+    word: "алдаа",
   },
   {
-    word: "avatar",
+    word: "хөгжүүлэгч",
   },
   {
-    word: "gif",
+    word: "компани",
   },
   {
-    word: "mental",
+    word: "цалин",
   },
   {
-    word: "map",
+    word: "дэлхий",
   },
   {
-    word: "island",
+    word: "анааш",
   },
   {
-    word: "hockey",
+    word: "баавгай",
   },
   {
-    word: "chess",
+    word: "байцай",
   },
   {
-    word: "viber",
+    word: "лууван",
   },
   {
-    word: "github",
+    word: "цаас",
   },
   {
-    word: "png",
+    word: "эрвээхий",
   },
   {
-    word: "silver",
+    word: "цахилгаан",
   },
   {
-    word: "mobile",
+    word: "ажилчин",
   },
   {
-    word: "gpu",
+    word: "аялал",
   },
   {
-    word: "java",
+    word: "зугаалга",
   },
   {
-    word: "google",
+    word: "сум",
   },
   {
-    word: "venice",
+    word: "хөрш",
   },
   {
-    word: "excel",
+    word: "зэрэглэл",
   },
   {
-    word: "mysql",
+    word: "мануул",
   },
   {
-    word: "nepal",
+    word: "мануухай",
   },
   {
-    word: "flute",
+    word: "оффис",
   },
   {
-    word: "crypto",
+    word: "такси",
   },
   {
-    word: "tesla",
+    word: "хундага",
   },
   {
-    word: "mars",
+    word: "халбага",
   },
   {
-    word: "proxy",
+    word: "караоке",
   },
   {
-    word: "email",
+    word: "шударга",
   },
   {
-    word: "html",
+    word: "зөгий",
   },
   {
-    word: "air",
+    word: "цэцэг",
   },
   {
-    word: "idea",
+    word: "шумуул",
   },
   {
-    word: "server",
+    word: "сүлжээ",
   },
   {
-    word: "svg",
+    word: "зураг",
   },
   {
-    word: "jpeg",
+    word: "бичлэг",
   },
   {
-    word: "search",
+    word: "театр",
   },
   {
-    word: "key",
+    word: "ургамал",
   },
   {
-    word: "egypt",
+    word: "хятад",
   },
   {
-    word: "joker",
+    word: "орос",
   },
   {
-    word: "dubai",
+    word: "япон",
   },
   {
-    word: "photo",
+    word: "солонгос",
   },
   {
-    word: "nile",
+    word: "финланд",
   },
   {
-    word: "rain",
+    word: "олимп",
   },
 ];
