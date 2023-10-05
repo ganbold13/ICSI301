@@ -112,6 +112,13 @@ function initGame(e) {
     }
 
     setDetails();
+  } else {
+    if (focusedInput) {
+      var f = focusedInput;
+      f.disabled = true;
+      setTimeout(() => (f.disabled = false), 100);
+      focusedInput.value = "";
+    }
   }
 
   setTimeout(() => {
