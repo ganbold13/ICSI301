@@ -3,7 +3,8 @@ const inputs = document.querySelector(".inputs"),
   wrongLetter = document.querySelector(".wrong-letter"),
   resetBtn = document.querySelector(".reset-btn"),
   title = document.querySelector("#title"),
-  timer = document.querySelector("#timer");
+  timer = document.querySelector("#timer"),
+  gamePlay = document.querySelector("#gamePlay");
 
 let word,
   maxGuesses,
@@ -125,6 +126,7 @@ function initGame(e) {
     if (correctLetters.length === word.length) {
       wordGuesses++;
       if (wordGuesses === 5) {
+        gamePlay.style.display = "none";
         setDetailsWin(true);
       } else return randomWord();
     } else if (maxGuesses < 1) {
@@ -139,11 +141,19 @@ function initGame(e) {
   }, 100);
 }
 
-resetBtn.addEventListener("click", () => {
+function resetGame(){
   randomWord();
+  gamePlay.style.display = "block";
   playedDuration = 0;
+  rightLetterGuesses = 0,
+  wrongLetterGuesses = 0,
+  wordGuesses = 0;
   clearInterval(timerInterval);
   timerInterval = setInterval(setTimer, 1000);
+}
+
+resetBtn.addEventListener("click", () => {
+  resetGame();
 });
 inputs.addEventListener("click", (e) => {
   if (e.target.tagName === "INPUT") {

@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Үг таах тоглоом</title>
-    <link rel="stylesheet" href="style.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <div id="header">
-        <h1 id="title">Үгийг таа</h1>
-        <span id="timer">1234</span>
-      </div>
-      <div class="content">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Үг таах тоглоом</title>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <div id="header">
+      <h1 id="title">Үгийг таа</h1>
+      <span id="timer">1234</span>
+    </div>
+    <div class="content">
+      <div id="gamePlay">
         <input type="text" class="typing-input" maxlength="1" />
         <div class="inputs"></div>
-        <div class="details">
-          <p class="guess-left">Амь: <span></span></p>
-          <p class="wrong-letter">Буруу таасан үсгүүд: <span></span></p>
-        </div>
-        <button class="reset-btn">Дахин тоглох</button>
       </div>
+      <div class="details">
+        <p class="guess-left">Амь: <span></span></p>
+        <p class="wrong-letter">Буруу таасан үсгүүд: <span></span></p>
+      </div>
+      <button class="reset-btn">Дахин тоглох</button>
     </div>
+  </div>
 
-    <script src="words.js"></script>
-    <script src="script.js"></script>
-  </body>
+  <script src="words.js"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
