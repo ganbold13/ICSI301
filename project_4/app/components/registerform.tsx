@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
-import { cookies } from 'next/headers'
+'use client'
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const RegisterForm = () => {
+  const router = useRouter();
+
   const [fname, setFName] = useState('');
   const [lname, setLName] = useState('');
   const [sex, setSex] = useState('');
@@ -11,10 +15,7 @@ const RegisterForm = () => {
   const [password, setPassword] = useState('');
 
   function isValidEmail(email: string) {
-    // Regular expression for a valid email pattern
     const emailPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
-
-    // Test the email against the pattern
     return emailPattern.test(email);
   }
 
@@ -41,32 +42,41 @@ const RegisterForm = () => {
     }
   }
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const formData = {
-      fname,
-      lname,
-      sex,
-      birthDate,
-      phone,
-      email,
-      password
-    };
+    const formData = new FormData();
+
+    formData.append('fname', fname);
+    formData.append('lname', lname);
+    formData.append('sex', sex);
+    formData.append('birthDate', birthDate);
+    formData.append('phone', phone);
+    formData.append('email', email);
+    formData.append('password', password);
+
+    const formDataObj = Object.fromEntries(formData);
 
     if (isValidEmail(email)) {
-      console.log(formData);
-      // cookies().set('data', JSON.stringify(formData));
+      console.log(formDataObj);
     } else {
-      console.log("Email is not email hha");
+      console.log("Email is not valid");
       return;
     }
 
     if (checkPasswordStrength(password) === "Weak") {
-      console.log("Suga pass");
+      console.log("Password is weak");
       return;
     }
 
-    localStorage.setItem("formData", JSON.stringify(formData));
+    // const data = await fetch('/api/form', {
+    //   method: 'POST',
+    //   body: JSON.stringify(formDataObj),
+    // }).then((res) => {
+    //   return res.json();
+    // });
+    localStorage.setItem("formData", JSON.stringify(formDataObj))
+
+    router.push("../login");
   };
 
   return (

@@ -11,20 +11,45 @@ const LoginForm = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    // Handle login logic here
 
-    const cookie = localStorage.getItem("formData");
-    // const cookie = cookies().get('data');
+    // try {
+    // const data = await fetch('/api/form', {
+    // method: 'GET',
+    // });
+    const data = localStorage.getItem("formData")
 
-    const parsedData = cookie ? JSON.parse(cookie) : null;
-    if(parsedData == null) return;
+    console.log(data);
 
-    if(parsedData.email == email && parsedData.password == password){
-      router.push('/home')
+    // if (data.ok) {
+    // const parsedData = await data.json(); // Await the JSON parsing
+    const parsedData = data ? JSON.parse(data) : null;
+
+    if (parsedData == null) return;
+
+    if (parsedData.email === email && parsedData.password === password) {
+      // const response = await fetch('/api/form', {
+        // method: 'POST',
+        // body: 'loged',
+      // });
+      console.log(email, password)
+
+        localStorage.setItem("loged", "true")
+      // if (response.ok) {
+        router.push('/home');
+      // } 
     } else {
-      console.log(parsedData);
+      console.log('Invalid email or password');
+      console.log(password)
+      console.log(parsedData.password)
     }
-  };
+
+    // } else {
+    // console.log('Error while fetching data');
+    // }
+    // } catch (error) {
+    // console.error('An error occurred:', error);
+  }
+
 
   return (
     <div className='form'>
