@@ -1,13 +1,24 @@
-// 'use client'
-import React from "react"
+'use client'
+import React, { useEffect } from "react"
 import Link from 'next/link'
+import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
+const Home = () => {
+  const router = useRouter();
 
-export default function Home() {
+  useEffect(() => {
+    if (Cookies.get("loged") !== null) {
+      router.push('/home');
+    }
+  }, []);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+    <div className="flex min-h-screen flex-col items-center justify-center p-24">
        <Link href='/login' className="primaryButton">Sing In</Link>
        <Link href='./register' className="secondaryButton">Sing Up</Link>
-    </main>
+    </div>
   )
 }
+
+export default Home
