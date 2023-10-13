@@ -2,11 +2,12 @@
 
 import { useRouter } from 'next/navigation';
 import React from 'react'
+import Cookies from 'js-cookie';
 
 const home = () => {
   const router = useRouter();
 
-  if (localStorage.getItem("loged") == null){
+  if (Cookies.get("loged") == null){
     router.push('/login')
     return;
   }

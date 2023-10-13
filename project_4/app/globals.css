@@ -47,3 +47,7 @@ h2{
 label{
   @apply flex flex-col justify-between m-2 mb-4
 }
+
+input.invalid-email {
+  border: 2px solid red !important
+}

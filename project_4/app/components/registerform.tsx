@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -13,6 +14,7 @@ const RegisterForm = () => {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showInvalidEmailMessage, setShowInvalidEmailMessage] = useState(false);
 
   function isValidEmail(email: string) {
     const emailPattern = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
@@ -35,7 +37,7 @@ const RegisterForm = () => {
 
     if (score < 8) {
       return 'Weak';
-    } else if (score < 12) {
+    } else if (score < 10) {
       return 'Moderate';
     } else {
       return 'Strong';
@@ -60,6 +62,7 @@ const RegisterForm = () => {
       console.log(formDataObj);
     } else {
       console.log("Email is not valid");
+
       return;
     }
 
@@ -67,16 +70,20 @@ const RegisterForm = () => {
       console.log("Password is weak");
       return;
     }
-
-    // const data = await fetch('/api/form', {
-    //   method: 'POST',
-    //   body: JSON.stringify(formDataObj),
-    // }).then((res) => {
-    //   return res.json();
-    // });
-    localStorage.setItem("formData", JSON.stringify(formDataObj))
+    Cookies.set("formData", JSON.stringify(formDataObj))
 
     router.push("../login");
+  };
+
+  const handleEmailChange = (e: any) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+
+    if (!isValidEmail(newEmail)) {
+      setShowInvalidEmailMessage(true); // Show the invalid email message
+    } else {
+      setShowInvalidEmailMessage(false); // Hide the message if email is valid
+    }
   };
 
   return (
@@ -139,9 +146,15 @@ const RegisterForm = () => {
           Email:
           <input
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              handleEmailChange(e);
+            }
+            }
             required
           />
+          {showInvalidEmailMessage && email != "" && (
+            <span style={{ color: 'red', marginLeft: 190, textAlign: "end" }}>Email is not valid</span>
+          )}
         </label>
         <label>
           Password:
@@ -151,6 +164,15 @@ const RegisterForm = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          {checkPasswordStrength(password) == 'Weak' && password != "" && (
+            <span style={{ color: 'red', marginLeft: 240, textAlign: "end" }}>Weak</span>
+          )}
+          {checkPasswordStrength(password) == 'Moderate' && password != "" && (
+            <span style={{ color: 'yellow', marginLeft: 240,textAlign: "end" }}>Moderate</span>
+          )}
+          {checkPasswordStrength(password) == 'Strong' && password != "" && (
+            <span style={{ color: 'green', marginLeft: 240, textAlign: "end" }}>Strong</span>
+          )}
         </label>
         <button type="submit" className="primaryButton">Sign Up</button>
       </form>
