@@ -54,8 +54,8 @@ body {
 }
 
 .ins-container {
-  display: flex;
-  justify-content: center;
+  display: block;
+  /* justify-content: center; */
   width: calc(100% - var(--sidebar-med-size));
   margin-left: auto;
 }
@@ -175,7 +175,7 @@ body {
   }
 
   .ins-container {
-    width: calc(100% - var(--sidebar-min-size));
+    width: calc(100% - var(--sidebar-med-size));
   }
 
 

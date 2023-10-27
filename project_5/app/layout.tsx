@@ -14,15 +14,15 @@ export default function RootLayout({
   user: any
 }) {
   return (
-    // <html>
-      // {/* <body> */}
-        <div className='ins-container'>
-          <HeadBar />
-          <SideBar user={user} />
-          <BottomBar user={user} />
-          <div>{children}</div>
-        </div>
-      // </body>
-    // </html>
+    <html>
+      <body>
+          <div>
+            <HeadBar />
+            <SideBar user={user} />
+            <BottomBar user={user} />
+            <div className='ins-container'>{children}</div>
+          </div>
+      </body>
+    </html>
   )
 }
