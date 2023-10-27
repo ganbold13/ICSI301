@@ -121,7 +121,7 @@ export default function SideBar({ user }: any) {
         <Clickable href="/activity" className="">{activity}</Clickable>
         <Clickable href="/create" className="">{create}</Clickable>
         {user && (
-          <Clickable href="/profile" className="">
+          <Clickable href={loginUserData?.username} className="">
             <div className="header-item">
               <ProfilePic
                 className="header-icon"

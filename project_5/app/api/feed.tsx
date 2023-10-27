@@ -1,4 +1,4 @@
-import { data } from "../../static/example_data";
+import { data } from "../static/example_data";
 const feed = data?.feed;
 
 export default function Feed(req:any, res:any) {
