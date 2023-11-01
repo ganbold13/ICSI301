@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <MyLayout user={data.loginUser}>
       <div className="homepage-container flex justify-center pt-6">
-        <div className="homepage-feed mt-4">
+        <div className="homepage-feed mt-4 px-2">
           {data.feed.map((val, idx) => {
             return (
               <FeedItem key={idx} data={val}></FeedItem>

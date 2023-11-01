@@ -94,8 +94,8 @@ export default function BottomBar({ user }: any) {
         <Clickable href="/" className="">{home}</Clickable>
         <Clickable href="/explore" className="">{explore}</Clickable>
         <Clickable href="/reels" className="">{reel}</Clickable>
-        <Clickable href="/create" className="">{create}</Clickable>
-        <Clickable href="/messages" className="">{messages}</Clickable>
+        <Clickable href="" className="">{create}</Clickable>
+        <Clickable href="" className="">{messages}</Clickable>
         {/* {user && ( */}
           <div className="header-item">
             <ProfilePic

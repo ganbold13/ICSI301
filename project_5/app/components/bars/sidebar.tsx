@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import HomeIcon from "../icons/home_icon";
 import DmIcon from "../icons/dm_icon";
@@ -24,8 +24,11 @@ import InstagramIcon from "../icons/instagram_icon";
 
 
 export default function SideBar({ user }: any) {
+  const router = useRouter();
   const pathname = usePathname();
+  const loginUserData = user;
   // set icons
+
   const home =
     pathname === "/" ? (
       <div className="header-item">
@@ -38,6 +41,7 @@ export default function SideBar({ user }: any) {
         <p>Home</p>
       </div>
     );
+
   const messages =
     pathname === "/messages" ? (
       <div className="header-item">
@@ -50,19 +54,20 @@ export default function SideBar({ user }: any) {
         <p>Messages</p>
       </div>
     );
+
   const explore =
     pathname === "/explore" ? (
       <div className="header-item">
         <ExploreIconActive className="header-icon" />
         <strong>Explore</strong>
       </div>
-
     ) : (
       <div className="header-item">
         <ExploreIcon className="header-icon" />
         <p>Explore</p>
       </div>
     );
+
   const activity =
     pathname === "/activity" ? (
       <div className="header-item">
@@ -100,8 +105,28 @@ export default function SideBar({ user }: any) {
     </div>
   )
 
+  const profile = pathname === '/' + loginUserData?.username ? (
+    <div className="header-item">
+      <ProfilePic
+        className="header-icon"
+        src={loginUserData?.image}
+        username={loginUserData?.username}
+        size={22}
+      />
+      <strong>Profile</strong>
+    </div>
+  ) : (
+    <div className="header-item" onClick={() => router.push(loginUserData?.username)}>
+      <ProfilePic
+        className="header-icon"
+        src={loginUserData?.image}
+        username={loginUserData?.username}
+        size={22}
+      />
+      <p>Profile</p>
+    </div>
+  )
   // const { data, setLoginUser } = LoginUserHook();
-  const loginUserData = user;
 
   return (
     <div className="sidebar h-screen fixed z-20 top-0 left-0 bottom-0 bg-white flex justify-start px-3 pt-2 pb-5 border-gray-300 overflow-y-auto border-r">
@@ -117,21 +142,11 @@ export default function SideBar({ user }: any) {
         </div>
         <Clickable href="/explore" className="">{explore}</Clickable>
         <Clickable href="/reels" className="">{reel}</Clickable>
-        <Clickable href="/messages" className="">{messages}</Clickable>
-        <Clickable href="/activity" className="">{activity}</Clickable>
-        <Clickable href="/create" className="">{create}</Clickable>
+        <Clickable href="" className="">{messages}</Clickable>
+        <Clickable href="" className="">{activity}</Clickable>
+        <Clickable href="" className="">{create}</Clickable>
         {user && (
-          <Clickable href={loginUserData?.username} className="">
-            <div className="header-item">
-              <ProfilePic
-                className="header-icon"
-                src={loginUserData?.image}
-                username={loginUserData?.username}
-                size={22}
-              />
-              <p>Profile</p>
-            </div>
-          </Clickable>
+            profile
         )}
       </div>
     </div>

@@ -18,7 +18,6 @@ export default function FeedItemPhotos({ photos }:any) {
   useEffect(() => {
     if (150 > 0)
       setMinX(-((150 + 2) * (photos.length - 1)));
-    console.log(150);
   });
 
   const slideButtonEvent = (x:any) => {

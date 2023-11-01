@@ -1,5 +1,7 @@
+'use client'
+
 import React from "react";
-import Router from "next/router";
+import {useRouter} from "next/navigation";
 
 
 export default function ProfilePic({
@@ -10,8 +12,10 @@ export default function ProfilePic({
   href,
   ...props
 }: any): JSX.Element {
+  const router = useRouter();
+  
   return (
-    <span {...props} onClick={() => Router.push("/[pid]", `/${username}`)}>
+    <span {...props} onClick={() => router.push(username)}>
       <img
         alt={`${username}'s profile pic`}
         data-testid="user-avatar"
@@ -25,7 +29,6 @@ export default function ProfilePic({
           cursor: "pointer",
         }}
       ></img>
-      {/* {...props} */}
     </span>
   );
 }

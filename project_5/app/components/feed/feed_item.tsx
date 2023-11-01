@@ -1,25 +1,20 @@
+'use client'
 import React from "react";
 import FeedItemHeader from "./feed_item_header";
 import FeedItemButtons from "./feed_item_buttons";
 import FeedItemComment from "./feed_item_comment";
 import AddComment from "./add_comment";
 import FeedItemPhotos from "./feed_item_photos";
-import Router from "next/router";
-// import ModalStateHook from "../hooks/modal_hook";
+import {useRouter} from "next/navigation";
 
 export default function FeedItem({ data }: any) {
-  // const { showModal, setModal } = ModalStateHook();
-
-  // const moreClickEvent = () => {
-  //   // setModal(true, data);
-  // };
+  const router = useRouter();
   return (
     <article className="feed-item-container flex flex-col">
       <FeedItemHeader
         image={data.user.image}
         username={data.user.username}
         data={data}
-      // moreClickEvent={moreClickEvent}
       />
       <FeedItemPhotos photos={data.photos} />
       <FeedItemButtons className="feed-item-buttons-container w-full h-10 my-1 flex items-center justify-between" />
@@ -33,7 +28,7 @@ export default function FeedItem({ data }: any) {
         className="overflow-hidden text-14-light cursor-pointer my-1"
         style={{ color: "#9a9a9a", display: "flex" }}
         onClick={() =>
-          Router.push("/post/[pid]", `/post/${data?.pid || "post-test"}`)
+          router.push(`/post/${data?.pid || "post-test"}`)
         }
       >
         View all {data?.commentCount || "0"} comment
@@ -52,7 +47,7 @@ export default function FeedItem({ data }: any) {
       <a
         className="feed-item-date-text cursor-pointer uppercase"
         onClick={() =>
-          Router.push("/post/[pid]", `/post/${data?.pid || "post-test"}`)
+          router.push(`/post/${data?.pid || "post-test"}`)
         }
       >
       </a>

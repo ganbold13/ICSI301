@@ -9,9 +9,7 @@ export default function RightBarSuggestions({ data, user }: any) {
     <div className="suggestions-container flex mt-9 pl-16 flex-col">
       <div className="px-4 py-2">
         <div className="suggestion-item h-11 w-72 flex items-center">
-          <Clickable href="/profile" className="">
-            <ProfilePic size={44} src={user.image} username={user.username} />
-          </Clickable>
+          <ProfilePic size={44} src={user.image} username={user.username} />
           <div className="suggestion-user-info ml-3 flex flex-col">
             <UsernameText
               username={user.username}

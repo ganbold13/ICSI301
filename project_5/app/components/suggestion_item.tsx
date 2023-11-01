@@ -2,7 +2,7 @@ import React from "react";
 import ProfilePic from "./profile_pic";
 import UsernameText from "./username_text";
 
-export default function SuggestionItem({ data }: any) {
+export default function SuggestionItem({ data, showDetail }: any) {
   return (
     <div className="px-4 py-2">
       <div className="suggestion-item h-11 w-72 flex items-center">
@@ -12,7 +12,7 @@ export default function SuggestionItem({ data }: any) {
             username={data.username}
             className="text-14-bold cursor-pointer"
           />
-          <span className="text-12-light">{data?.text}</span>
+          {showDetail && <span className="text-12-light">{data?.text}</span>}
         </div>
         <div className="follow-button text-12-bold flex items-center ml-auto text-blue cursor-pointer">
           Follow
