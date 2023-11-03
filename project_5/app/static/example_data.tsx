@@ -9,10 +9,6 @@ export const data = {
       {
         photos: [
           "https://picsum.photos/id/213/600/600",
-          "https://picsum.photos/id/247/600/600",
-          "https://picsum.photos/id/257/600/600",
-          "https://picsum.photos/id/287/600/600",
-          "https://picsum.photos/id/267/600/600",
         ],
         user: {
           username: "testuser",
@@ -47,8 +43,6 @@ export const data = {
       {
         photos: [
           "https://picsum.photos/id/236/600/600",
-          "https://picsum.photos/id/296/600/600",
-          "https://picsum.photos/id/256/600/600",
         ],
         user: {
           username: "tea_lover",
@@ -67,9 +61,6 @@ export const data = {
       {
         photos: [
           "https://picsum.photos/id/225/600/600",
-          "https://picsum.photos/id/241/600/600",
-          "https://picsum.photos/id/255/600/600",
-          "https://picsum.photos/id/281/600/600",
         ],
         user: {
           username: "spotifyGuy",
@@ -88,7 +79,6 @@ export const data = {
       {
         photos: [
           "https://picsum.photos/id/222/600/600",
-          "https://picsum.photos/id/244/600/600",
         ],
         user: {
           username: "mamas_kitchen",

@@ -7,7 +7,7 @@ import React from 'react'
 const Post = () => {
   return (
     <div className="w-screen h-screen bg-gray-100 flex justify-center items-center">
-      <div className='post-container w-10/12 overflow-y-auto flex border border-black'>
+      <div className='post-container flex border border-black'>
         <ImageDetail image={data.feed[0].photos[0]} />
         <PostComment></PostComment>
       </div>

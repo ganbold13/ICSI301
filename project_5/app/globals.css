@@ -237,6 +237,10 @@ body {
     display: none;
   }
 
+  .post-comment{
+    display: block;
+  }
+
   .bottombar {
     display: none;
   }
@@ -262,12 +266,24 @@ body {
   .ins-container {
     width: calc(100% - var(--sidebar-min-size));
   }
+
+  .post-comment{
+    display: block;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .ins-container {
     flex-direction: column;
     width: 100%;
+  }
+
+  .post-comment{
+    display: none;
+  }
+
+  .post-image{
+    @apply w-full
   }
 
   .box {

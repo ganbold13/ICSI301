@@ -9,14 +9,14 @@ import PostCommentItem from './post_comment_item'
 
 const PostComment = () => {
     return (
-        <div className="relative w-full py-1">
+        <div className="post-comment relative w-full py-1">
             <button
                 className="absolute top-4 right-4 text-white text-2xl"
             >
                 <Link href="/"> &times; </Link>
             </button>
 
-            <div className="px-4 py-4 border-b border-gray-400">
+            <div className="px-4 py-4 border-b  border-gray-400">
                 <div className="flex space-x-2">
                     <img
                         src={data.loginUser.image}
