@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+    @apply transition-all
+}
+
+.ingredient-item{
+    @apply flex flex-col items-center border rounded-md border-gray-300 m-2 hover:m-1 hover:border-gray-500 hover:shadow-md
+}
