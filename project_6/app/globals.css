@@ -1,10 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 *{
     @apply transition-all
 }
 
+body{
+    @apply bg-blue-50 text-blue-950
+}
+
 .ingredient-item{
-    @apply flex flex-col items-center border rounded-md border-gray-300 m-2 hover:m-1 hover:border-gray-500 hover:shadow-md
+    @apply flex flex-col items-center bg-blue-100 border rounded-md border-blue-300 m-2 hover:m-1 hover:bg-blue-200 hover:font-bold hover:border-blue-500 hover:shadow-blue-200 hover:shadow-md
 }
