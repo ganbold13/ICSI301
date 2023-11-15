@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input, select {
+    @apply w-32 p-2 border rounded-md
+}
+
+select{
+    @apply bg-zinc-300
+}
+
+table, th, tr, td {
+    @apply border border-gray-500 text-center
+}
