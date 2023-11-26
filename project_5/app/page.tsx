@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 
 import RightBarSuggestions from "./components/right_bar_suggestions";
-import RootLayout from "./layout";
 import { data } from "./static/example_data";
 import FeedItem from "./components/feed/feed_item";
 import MyLayout from "./my_layout";
@@ -14,24 +13,39 @@ export default function Home() {
   const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
-    setFeed(data.feed as any);
-    setUser(data.loginUser as any);
+    // Fetch data from your server
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/getPhotos');
+        const photosData = await response.json();
+
+        const userResponse = await fetch('http://localhost:5000/getUsers?uid=001')
+        const userData = await userResponse.json();
+
+        setUser(userData[0]);
+        setFeed(photosData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+
     setSuggestions(data.suggestions as any);
-  }
-    , []);
+  }, []); 
 
   return (
-    <MyLayout user={data.loginUser}>
+    <MyLayout user={user}>
       <div className="homepage-container flex justify-center pt-6">
         <div className="homepage-feed mt-4 px-2">
-          {data.feed.map((val, idx) => {
+          {feed.map((val, idx) => {
             return (
               <FeedItem key={idx} data={val}></FeedItem>
             );
           })}
         </div>
         <div>
-          <RightBarSuggestions data={data.suggestions} user={data.loginUser}></RightBarSuggestions>
+          <RightBarSuggestions data={data.suggestions} user={user}></RightBarSuggestions>
         </div>
       </div>
     </MyLayout>

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import UsernameText from "../username_text";
 
-export default function FeedItemComment({ data }: any) {
-  const [showMore, setShowMore] = useState(data?.description.length < 80);
+export default function FeedItemComment({ user, data }: any) {
+  const [showMore, setShowMore] = useState(data?.caption.length < 80);
 
   return (
+    user &&
     <div className="overflow-hidden text-14-light inherit my-1">
-      <UsernameText username={data.username} />
+      <UsernameText username={user.username} nickname={user.nickname} />
       <span className={!showMore ? "feed-item-text-description " : "inherit"}>
-        {data?.description ||
+        {data?.caption ||
           "lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum"}
       </span>
       {!showMore && (

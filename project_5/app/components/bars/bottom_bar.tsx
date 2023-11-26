@@ -100,7 +100,7 @@ export default function BottomBar({ user }: any) {
           <div className="header-item">
             <ProfilePic
               className="header-icon"
-              src={loginUserData?.image}
+              src={loginUserData?.profile_pic}
               username={loginUserData?.username}
               size={22}
             />

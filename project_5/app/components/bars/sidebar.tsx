@@ -109,7 +109,7 @@ export default function SideBar({ user }: any) {
     <div className="header-item">
       <ProfilePic
         className="header-icon"
-        src={loginUserData?.image}
+        src={loginUserData?.profile}
         username={loginUserData?.username}
         size={22}
       />
@@ -119,7 +119,7 @@ export default function SideBar({ user }: any) {
     <div className="header-item" onClick={() => router.push(loginUserData?.username)}>
       <ProfilePic
         className="header-icon"
-        src={loginUserData?.image}
+        src={loginUserData?.profile_pic}
         username={loginUserData?.username}
         size={22}
       />

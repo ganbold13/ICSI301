@@ -10,7 +10,6 @@ app.prepare().then(() => {
   const server = express();
 
   server.get('/api/data/all', (req, res) => {
-    // Return all data
     res.json(raw);
   });
 

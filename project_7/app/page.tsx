@@ -203,7 +203,7 @@ return (
         <input
           type="number"
           id="minPrice"
-          value={filters.maxPrice}
+          value={filters.minPrice}
           onChange={(e) => handleFilterChange('minPrice', e.target.value)}
           className=""
         />

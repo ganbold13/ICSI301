@@ -7,7 +7,7 @@ import { data } from '../static/example_data'
 import Link from 'next/link'
 import PostCommentItem from './post_comment_item'
 
-const PostComment = () => {
+const PostComment = ({ user , photo ,comments }: any) => {
     return (
         <div className="post-comment relative w-full py-1">
             <button
@@ -19,14 +19,14 @@ const PostComment = () => {
             <div className="px-4 py-4 border-b  border-gray-400">
                 <div className="flex space-x-2">
                     <img
-                        src={data.loginUser.image}
+                        src={user.profile_pic}
                         className="w-8 h-8 rounded-full"
                     />
                     <div className="w-full">
                         <div className="flex justify-between items-center">
                             <div className="flex">
                                 <p className="text-sm font-semibold ml">
-                                    {data.loginUser.username}
+                                    {user.nickname}
                                 </p>
                             </div>
                         </div>
@@ -34,13 +34,13 @@ const PostComment = () => {
                 </div>
             </div>
 
-            <PostCommentItem></PostCommentItem>
+            <PostCommentItem comments={comments}></PostCommentItem>
 
             <div className="bottom-section border-gray-400 border-t absolute bottom-0 left-0 right-0">
                 <div className="px-4">
                     <FeedItemButtons className="feed-item-buttons-container w-full h-10 my-1 flex items-center justify-between" />
                     <a href="#" className="feed-item-text text-14-bold my-1">
-                        {data?.feed[0].likeCount || "0"} likes
+                        {photo.likeCount || "0"} likes
                     </a>
                     <AddComment></AddComment>
                 </div>

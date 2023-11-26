@@ -1,14 +1,16 @@
 import React from "react";
-import Router from "next/router";
+import { useRouter } from "next/navigation";
 
-export default function UsernameText({ username, ...props }: any) {
+export default function UsernameText({ username, nickname, ...props }: any) {
+  const router = useRouter();
+
   return (
     <a
       className="text-14-bold mr-1 cursor-pointer"
-      onClick={() => Router.push("/[pid]", `/${username}`)}
+      onClick={() => router.push(username)}
       {...props}
     >
-      {username || "username"}
+      {nickname || "username"}
     </a>
   );
 }

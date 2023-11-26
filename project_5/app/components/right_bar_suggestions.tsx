@@ -1,21 +1,21 @@
-import React, { use } from "react";
+import React from "react";
 import SuggestionItem from "./suggestion_item";
 import ProfilePic from "./profile_pic";
 import UsernameText from "./username_text";
-import Clickable from "./clickable";
 
 export default function RightBarSuggestions({ data, user }: any) {
   return (
     <div className="suggestions-container flex mt-9 pl-16 flex-col">
       <div className="px-4 py-2">
         <div className="suggestion-item h-11 w-72 flex items-center">
-          <ProfilePic size={44} src={user.image} username={user.username} />
+          <ProfilePic size={44} src={user.profile_pic} username={user.username} />
           <div className="suggestion-user-info ml-3 flex flex-col">
             <UsernameText
               username={user.username}
+              nickname={user.nickname}
               className="text-14-bold cursor-pointer"
             />
-            <span className="text-12-light">{user.name}</span>
+            <span className="text-12-light">{user.username}</span>
           </div>
           <div className="follow-button text-12-bold flex items-center ml-auto text-blue cursor-pointer">
             Switch
