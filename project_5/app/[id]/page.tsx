@@ -59,9 +59,9 @@ export default function ProfilePage() {
                   <SettingsIcon className="m-2"></SettingsIcon>
                 </div>
                 <div className="followers-details flex mb-5">
-                  <div className="mr-10"><strong>4</strong> posts</div>
-                  <div className="mr-10"><strong>4</strong> followers</div>
-                  <div><strong>4</strong> following</div>
+                  <div className="mr-10"><strong>{(user[0] as any).photos.length}</strong> posts</div>
+                  <div className="mr-10"><strong>{(user[0] as any).followers}</strong> followers</div>
+                  <div><strong>{(user[0] as any).following}</strong> following</div>
                 </div>
                 <div className="name-and-bio flex flex-col justify-between h-12">
                   <UsernameText username={(user[0] as any).username} nickname={(user[0] as any).nickname}></UsernameText>

@@ -32,7 +32,7 @@ export default function Home() {
     fetchData();
 
     setSuggestions(data.suggestions as any);
-  }, []); 
+  }, []);
 
   return (
     <MyLayout user={user}>
@@ -40,6 +40,7 @@ export default function Home() {
         <div className="homepage-feed mt-4 px-2">
           {feed.map((val, idx) => {
             return (
+              (val as any).uid != (user as any).uid &&
               <FeedItem key={idx} data={val}></FeedItem>
             );
           })}
